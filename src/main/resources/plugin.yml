@@ -1,0 +1,8 @@
+name: Main
+version: '${project.version}'
+main: de.kokosfrucht.timer.Main
+api-version: '1.21'
+
+commands:
+  timer:
+    permission: timerplugin.command.timer
