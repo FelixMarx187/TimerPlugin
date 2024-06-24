@@ -66,7 +66,7 @@ public class Timer {
                 continue;
             }
 
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GOLD.toString() + BOLD + getFormattedTime()));
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.LIGHT_PURPLE.toString() + BOLD + getFormattedTime()));
 
         }
     }

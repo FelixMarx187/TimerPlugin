@@ -31,7 +31,7 @@ public class TimerCommand implements CommandExecutor {
             case "pause": {
                 Timer timer = Main.getInstance().getTimer();
 
-                if (timer.isRunning()) {
+                if (!timer.isRunning()) {
                     commandSender.sendMessage(ChatColor.RED + "Der Timer läuft nicht!");
                     break;
                 }
@@ -39,15 +39,15 @@ public class TimerCommand implements CommandExecutor {
                 commandSender.sendMessage(ChatColor.GRAY + "Der Timer wurde gestoppt!");
                 break;
             }
-            case "time": {
+            case "set": {
                 Timer timer = Main.getInstance().getTimer();
                 if (args.length != 2) {
-                    commandSender.sendMessage(ChatColor.GRAY + "Verwendung: " + ChatColor.BLUE + "/timer time <Zeit>");
+                    commandSender.sendMessage(ChatColor.GRAY + "Verwendung: " + ChatColor.BLUE + "/timer set <Zeit>");
                     return true;
                 }
                 try {
                     timer.setTime(Integer.parseInt(args[1]));
-                    commandSender.sendMessage(ChatColor.GRAY + "Der Timer wurde gestoppt!");
+                    commandSender.sendMessage(ChatColor.GRAY + "Zeit wurde gesetzt!");
                 } catch (NumberFormatException e) {
                     commandSender.sendMessage(ChatColor.RED + "Dein Parameter 2 muss eine Zahl sein!");
                 }
@@ -58,7 +58,7 @@ public class TimerCommand implements CommandExecutor {
 
                 timer.setRunning(false);
                 timer.setTime(0);
-                commandSender.sendMessage(ChatColor.GRAY + "Der Timer wurde gestoppt!");
+                commandSender.sendMessage(ChatColor.GRAY + "Der Timer wurde zurückgesetzt!");
                 break;
             }
             default:
@@ -68,6 +68,6 @@ public class TimerCommand implements CommandExecutor {
         return false;
     }
     private void sendUsage(CommandSender sender) {
-        sender.sendMessage(ChatColor.GRAY + "Verwendung: " + ChatColor.DARK_GRAY + "/timer resume, / timer pause, /time <Zeit>, /timer reset");
+        sender.sendMessage(ChatColor.GRAY + "Verwendung: " + ChatColor.DARK_GRAY + "/timer resume, / timer pause, /timer set <Zeit>, /timer reset");
     }
 }
